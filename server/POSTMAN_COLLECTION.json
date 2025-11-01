@@ -1,0 +1,64 @@
+{
+  "info": {
+    "name": "Tourism Package Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth - Register",
+      "request": {
+        "method": "POST",
+        "header": [ {"key": "Content-Type", "value": "application/json"} ],
+        "url": {"raw": "http://localhost:5000/api/auth/register", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api","auth","register"]},
+        "body": {"mode": "raw", "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"user@test.com\",\n  \"password\": \"User@123\"\n}"}
+      }
+    },
+    {
+      "name": "Auth - Login",
+      "request": {
+        "method": "POST",
+        "header": [ {"key": "Content-Type", "value": "application/json"} ],
+        "url": {"raw": "http://localhost:5000/api/auth/login", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api","auth","login"]},
+        "body": {"mode": "raw", "raw": "{\n  \"email\": \"admin@tourism.local\",\n  \"password\": \"Admin@123\"\n}"}
+      }
+    },
+    {
+      "name": "Packages - List All",
+      "request": {"method": "GET", "url": {"raw": "http://localhost:5000/api/packages", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api","packages"]}}
+    },
+    {
+      "name": "Packages - Create (Admin)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {"key": "Content-Type", "value": "application/json"},
+          {"key": "Authorization", "value": "Bearer {{token}}"}
+        ],
+        "url": {"raw": "http://localhost:5000/api/packages", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api","packages"]},
+        "body": {"mode": "raw", "raw": "{\n  \"name\": \"Kerala Backwaters\",\n  \"destination\": \"Kerala, India\",\n  \"description\": \"Relaxing houseboat experience\",\n  \"price\": 300,\n  \"durationDays\": 5,\n  \"imageUrl\": \"https://images.unsplash.com/photo-1548013146-72479768bada\",\n  \"availableSlots\": 25\n}"}
+      }
+    },
+    {
+      "name": "Bookings - My Bookings",
+      "request": {
+        "method": "GET",
+        "header": [ {"key": "Authorization", "value": "Bearer {{token}}"} ],
+        "url": {"raw": "http://localhost:5000/api/bookings/me", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api","bookings","me"]}
+      }
+    },
+    {
+      "name": "Bookings - Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {"key": "Content-Type", "value": "application/json"},
+          {"key": "Authorization", "value": "Bearer {{token}}"}
+        ],
+        "url": {"raw": "http://localhost:5000/api/bookings", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api","bookings"]},
+        "body": {"mode": "raw", "raw": "{\n  \"travelPackageId\": \"<PUT_PACKAGE_ID_HERE>\",\n  \"bookingDate\": \"2025-12-01\",\n  \"numberOfPeople\": 2\n}"}
+      }
+    }
+  ],
+  "variable": [ {"key": "token", "value": ""} ]
+}
+
