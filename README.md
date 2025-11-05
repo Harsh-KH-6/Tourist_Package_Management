@@ -1,4 +1,4 @@
-## Tourism Package Management System (MERN)
+## Tourism Package Management System 
 
 Production-ready MERN app with JWT auth, admin management, and user bookings.
 
