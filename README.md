@@ -1,32 +1,53 @@
-## Tourism Package Management System 
+# Tourism Package Management System
 
-Production-ready MERN app with JWT auth, admin management, and user bookings.
+Production-ready MERN (MongoDB, Express, React, Node.js) application for tourism package booking and management. Features secure JWT authentication, full admin control, and a modern React user interface with protected routes.
 
-### Folders
-- `server`: Express API, MongoDB models, JWT auth, seed script
-- `client`: React (Vite) app with React Router, Tailwind UI
+## Features
 
-### Quick Start
-1) Prerequisites: Node 18+, MongoDB running locally
+- **User**: Browse curated travel packages, detailed itineraries, and vibrant images. Register/login, book packages, track bookings.
+- **Admin**: Add, edit, delete packages; manage bookings and users from a dashboard.
+- **Authentication**: Secure JWT-based user and admin login.
+- **API**: REST endpoints for packages, bookings, and authentication.
 
-2) Server
-```
+## Tech Stack
+
+- **Backend:** Node.js, Express, MongoDB (Mongoose), JWT, bcrypt, CORS, morgan  
+- **Frontend:** React (Vite), React Router, Axios, TailwindCSS, react-hot-toast
+- **Security:** Admin/user API & UI routes protected by JWT and custom guards.
+
+## Quick Start
+
+### Prerequisites
+
+- Node.js v18+
+- MongoDB running locally
+
+### Setup Instructions
+
+#### 1. Server
+
+```bash
 cd server
-cp ENV_TEMPLATE.txt .env   # create your env from template
-npm i
-npm run seed   # creates admin and sample packages
+cp ENV_TEMPLATE.txt .env   # create your .env from the template below
+npm install
+npm run seed               # seeds sample packages & admin (see below)
 npm run dev
 ```
 
-3) Client
-```
+#### 2. Client
+
+```bash
 cd client
-npm i
+npm install
 npm run dev
 ```
-Client runs on `http://localhost:5173`, Server on `http://localhost:5000`.
+
+- Client runs at `http://localhost:5173`
+- Server runs at `http://localhost:5000`
 
 ### Environment (.env)
+
+Example configuration for `/server/.env`:
 ```
 PORT=5000
 MONGO_URI=mongodb://localhost:27017/tourism_management
@@ -34,24 +55,42 @@ JWT_SECRET=replace_with_a_long_random_secret
 CLIENT_URL=http://localhost:5173
 ```
 
-### Seeded Admin
-- Email: `admin@tourism.local`
-- Password: `Admin@123`
+### Seeded Admin Account
 
-### API Endpoints
-- Auth: `POST /api/auth/register`, `POST /api/auth/login`
-- Packages: `GET /api/packages`, `GET /api/packages/:id`, Admin `POST/PUT/DELETE /api/packages`
-- Bookings: User `POST /api/bookings`, `GET /api/bookings/me`, Admin `GET /api/bookings`, `PUT /api/bookings/:id`
+- **Email:** `admin@tourism.local`
+- **Password:** `Admin@123`
 
-Postman collection: `server/POSTMAN_COLLECTION.json`
+Use this for initial login to access the admin dashboard.
 
-### Tech
-- Backend: Express, Mongoose, JWT, bcrypt, CORS, morgan
-- Frontend: React + Vite, React Router, Axios, Tailwind, react-hot-toast
+## API Endpoints
 
-### Notes
-- JWT stored in `localStorage`.
-- Admin routes protected in both API and UI.
-- Error responses are JSON with `{ success, message }`.
+- **Auth:** `POST /api/auth/register`, `POST /api/auth/login`
+- **Packages:** `GET /api/packages`, `GET /api/packages/:id`, **Admin:** `POST/PUT/DELETE /api/packages`
+- **Bookings:** **User:** `POST /api/bookings`, `GET /api/bookings/me`  
+  **Admin:** `GET /api/bookings`, `PUT /api/bookings/:id`
+
+> Find example API requests in Postman collection: [`server/POSTMAN_COLLECTION.json`](server/POSTMAN_COLLECTION.json)
+
+## Folder Structure
+
+- `server/` - Express backend, JWT, MongoDB models, seed script
+- `client/` - React (Vite) frontend, Tailwind UI, routing, protected pages
+
+## Example Travel Packages (Seeded)
+
+- Jaipur Heritage Tour
+- Andaman Island Escape
+- Ladakh Adventure Expedition
+- Goa Beach Escape
+- Kashmir Paradise Retreat
+
+Each comes with destination details, price, duration, images, and a multi-day itinerary.
+
+## Usage Notes
+
+- JWT access tokens are stored in `localStorage` (recommended for demo; use httpOnly cookies for production).
+- Admin/protected routes enforced both server-side and in UI.
+- API error responses are JSON: `{ success, message }`.
 
 
+For questions or contributions, please open an issue or pull request.
